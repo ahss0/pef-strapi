@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "teses",
+  "info": {
+    "singularName": "tese",
+    "pluralName": "teses",
+    "displayName": "Teses"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "conteudo": {
+      "type": "text"
+    }
+  }
+}
