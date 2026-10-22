@@ -509,6 +509,35 @@ export interface ApiExtensaoExtensao extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFuncionarioFuncionario extends Struct.CollectionTypeSchema {
+  collectionName: 'funcionarios';
+  info: {
+    displayName: 'funcionario';
+    pluralName: 'funcionarios';
+    singularName: 'funcionario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    funcao: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::funcionario.funcionario'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiIcIc extends Struct.SingleTypeSchema {
   collectionName: 'ics';
   info: {
@@ -1235,6 +1264,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::extensao.extensao': ApiExtensaoExtensao;
+      'api::funcionario.funcionario': ApiFuncionarioFuncionario;
       'api::ic.ic': ApiIcIc;
       'api::laboratorio.laboratorio': ApiLaboratorioLaboratorio;
       'api::noticia.noticia': ApiNoticiaNoticia;
